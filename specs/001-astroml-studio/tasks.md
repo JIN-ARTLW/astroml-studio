@@ -85,6 +85,19 @@ description: "Task list for AstroML Studio v0 (001-astroml-studio)"
 
 ---
 
+## Phase 3.5: 공개 천문 아카이브 연동 (사용자 요청, 천문 실효성 강화) ✅
+
+**Goal**: NASA 산하 등 공개 아카이브의 관측데이터를 명시적으로 불러오기. 무백엔드(CORS 확인된 소스만).
+
+- [X] T063 아카이브 클라이언트 — SDSS/Legacy 컷아웃 + NASA Images 검색 (`lib/astro/archives.ts`, CORS 확인: allow-origin *)
+- [X] T064 큐레이션 은하 목록(좌표+형태 라벨) — 실데이터 데모용 (`lib/demo/curatedGalaxies.ts`)
+- [X] T065 데모 로더 실데이터 우선화 — 큐레이션 좌표 → SDSS/Legacy 라이브 컷아웃, 오프라인 시 합성 폴백 (`lib/demo/loadDemo.ts`)
+- [X] T066 아카이브 불러오기 패널 — RA/Dec·유명천체·NASA 검색 임포트 + 출처 메타 저장 (`components/ArchiveImport.tsx`, `lib/store`)
+- [X] T067 🔭 천문 실효성 — 합성 데모를 실제 관측데이터(SDSS DR18/Legacy DR10)로 대체, 각 이미지에 RA/Dec·survey 출처 기록
+- [ ] T068 (후속) SkyView·MAST(허블/JWST, FITS) 연동 — CORS 미지원 → 얇은 프록시 + FITS 디코더(US3) 필요
+
+---
+
 ## Phase 4: User Story 2 - 외부 무료 GPU로 본격 학습 핸드오프 (Priority: P2)
 
 **Goal**: 동일 데이터·라벨로 노트북 자동생성 → 외부 GPU 실행 → 결과 업로드·비교.

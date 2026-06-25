@@ -76,7 +76,7 @@ export const store = {
   // ---- Images (대량 업로드, 손상 항목 스킵+사유) FR-006 ----
   async addImages(
     projectId: string,
-    files: Array<{ blob: Blob; name: string; folderClass?: string }>,
+    files: Array<{ blob: Blob; name: string; folderClass?: string; meta?: Record<string, unknown> }>,
     source: ImageItem["source"]
   ): Promise<{ added: number; skipped: { name: string; reason: string }[] }> {
     const project = await db.projects.get(projectId);
@@ -99,6 +99,7 @@ export const store = {
           height,
           source,
           name: f.name,
+          meta: f.meta,
         };
         await db.images.add(img);
         added++;

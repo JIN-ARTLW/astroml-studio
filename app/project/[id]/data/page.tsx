@@ -6,6 +6,7 @@ import { store } from "@/lib/store";
 import { loadDemo } from "@/lib/demo/loadDemo";
 import { ko } from "@/lib/i18n/ko";
 import { Button, Card, Banner, Loading } from "@/components/ui/states";
+import { ArchiveImport } from "@/components/ArchiveImport";
 
 const SCALE_LIMIT = 1500; // FR-029 / SC-009
 
@@ -15,6 +16,7 @@ export default function DataPage() {
   const search = useSearchParams();
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState<string>("");
+  const [demoProgress, setDemoProgress] = useState<{ cur: number; total: number } | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const folderRef = useRef<HTMLInputElement>(null);
 
@@ -31,19 +33,24 @@ export default function DataPage() {
   async function handleDemo() {
     setBusy(true);
     setNote("");
+    setDemoProgress({ cur: 0, total: 0 });
     try {
-      const { images: demo, synthetic } = await loadDemo();
+      const { images: demo, source } = await loadDemo((cur, total) => setDemoProgress({ cur, total }));
       const res = await store.addImages(
         id,
-        demo.map((d) => ({ blob: d.blob, name: d.name, folderClass: d.folderClass })),
+        demo.map((d) => ({ blob: d.blob, name: d.name, folderClass: d.folderClass, meta: d.meta })),
         "demo"
       );
-      setNote(
-        (synthetic ? "⚠️ 합성 예시 데이터입니다(실제 연구엔 실데이터 권장). " : "") +
-          `${res.added}장 추가됨.`
-      );
+      const label =
+        source === "archive"
+          ? "🔭 실제 관측데이터(SDSS/Legacy Survey) "
+          : source === "bundled"
+          ? "번들 실데이터 "
+          : "⚠️ 합성 예시(오프라인 폴백 — 실데이터 권장) ";
+      setNote(label + `${res.added}장 추가됨.`);
     } finally {
       setBusy(false);
+      setDemoProgress(null);
     }
   }
 
@@ -94,9 +101,19 @@ export default function DataPage() {
         />
       </div>
 
-      {busy && <Loading />}
+      {busy && (
+        <Loading
+          label={
+            demoProgress && demoProgress.total
+              ? `아카이브에서 관측 이미지 받는 중 ${demoProgress.cur}/${demoProgress.total}…`
+              : "처리 중…"
+          }
+        />
+      )}
       {note && <p className="text-sm text-muted">{note}</p>}
       {count > SCALE_LIMIT && <Banner>{ko.data.scaleWarn}</Banner>}
+
+      <ArchiveImport projectId={id} />
 
       <Card>
         <div className="mb-3 text-sm text-muted">{ko.data.count(count)}</div>

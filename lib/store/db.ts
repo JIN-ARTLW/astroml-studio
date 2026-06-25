@@ -19,8 +19,8 @@ export interface ImageItem {
   thumb?: Blob;
   width: number;
   height: number;
-  meta?: Record<string, unknown>;
-  source: "demo" | "upload" | "folder";
+  meta?: Record<string, unknown>; // 아카이브 출처(ra/dec/survey/url 등) 또는 WCS(P3)
+  source: "demo" | "upload" | "folder" | "archive";
   name: string;
 }
 
