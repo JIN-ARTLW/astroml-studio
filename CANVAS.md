@@ -5,6 +5,9 @@
 
 작성일: 2026-06-25 · 상태: v0 구상 · 코드명: AstroML Studio (변경 가능)
 
+**구체화 문서 (deep dives):**
+[데이터셋](docs/datasets.md) · [작업 플러그인 인터페이스](docs/task-interface.md) · [v0 사용자 흐름](docs/v0-flow.md) · [하이브리드 컴퓨팅](docs/compute-hybrid.md) · [데이터 모델](docs/data-model.md)
+
 ---
 
 ## 0. 한 페이지 캔버스
@@ -87,6 +90,8 @@ Task 인터페이스
 2. **검출/세그멘테이션** — 소스 위치·영역
 3. **물리량 회귀** — photometric redshift, 광도/질량 등
 4. **이상탐지** — transient·변광 등
+
+→ 구체 인터페이스(7개 슬롯)와 작업별 매핑: [작업 플러그인 인터페이스](docs/task-interface.md)
 
 ### 5.2 하이브리드 컴퓨팅 (무료의 핵심)
 무료로 GPU를 상시 백엔드에 띄우는 건 사실상 불가능하므로 우회한다.
