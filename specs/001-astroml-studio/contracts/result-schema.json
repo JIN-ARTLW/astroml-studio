@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AstroML Studio Result",
+  "description": "브라우저 학습과 외부 노트북 학습이 공유하는 표준 결과 형식 (FR-018, SC-006).",
+  "type": "object",
+  "required": ["task", "classes", "metrics", "trained_with"],
+  "properties": {
+    "task": {
+      "type": "string",
+      "enum": ["classification", "detection", "segmentation", "regression", "anomaly"]
+    },
+    "classes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "분류/검출 등 클래스 목록 (회귀는 빈 배열 가능)"
+    },
+    "metrics": {
+      "type": "object",
+      "description": "작업별 스칼라 지표. 분류 예: accuracy, f1_macro. 회귀 예: rmse, mae.",
+      "additionalProperties": { "type": "number" }
+    },
+    "confusion_matrix": {
+      "type": "array",
+      "items": { "type": "array", "items": { "type": "number" } },
+      "description": "분류 전용. classes 순서 기준 NxN."
+    },
+    "per_class": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "precision": { "type": "number" },
+          "recall": { "type": "number" },
+          "f1": { "type": "number" }
+        }
+      }
+    },
+    "curves": {
+      "type": "object",
+      "description": "학습/검증 곡선(에폭별).",
+      "properties": {
+        "train_loss": { "type": "array", "items": { "type": "number" } },
+        "val_loss": { "type": "array", "items": { "type": "number" } },
+        "train_acc": { "type": "array", "items": { "type": "number" } },
+        "val_acc": { "type": "array", "items": { "type": "number" } }
+      }
+    },
+    "trained_with": { "type": "string", "enum": ["browser", "external"] },
+    "backbone": { "type": "string" },
+    "split": {
+      "type": "object",
+      "properties": {
+        "train": { "type": "integer" },
+        "val": { "type": "integer" },
+        "seed": { "type": "integer" }
+      },
+      "description": "재현성용 (P5, FR-024)."
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "데이터 누수 등 경고 (P5, FR-025)."
+    }
+  }
+}

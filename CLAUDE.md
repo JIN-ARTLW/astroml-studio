@@ -4,14 +4,27 @@
 
 ## Active Feature: 001-astroml-studio
 
-핵심 컨텍스트:
-- 연구 캔버스(토대): `CANVAS.md`
+<!-- SPECKIT START -->
+**현재 계획**: `specs/001-astroml-studio/plan.md`
+
+설계 산출물:
 - Spec: `specs/001-astroml-studio/spec.md`
+- Plan: `specs/001-astroml-studio/plan.md`
+- Research: `specs/001-astroml-studio/research.md`
+- Data model: `specs/001-astroml-studio/data-model.md`
+- Contracts: `specs/001-astroml-studio/contracts/` (task-plugin, result-schema, local-store, notebook-handoff)
+- Quickstart/validation: `specs/001-astroml-studio/quickstart.md`
+
+**Stack**: TypeScript(Next.js App Router + shadcn/ui + Tailwind), 브라우저 ML(TensorFlow.js 전이학습), 로컬 저장(IndexedDB/Dexie), 노트북(.ipynb) 자동생성. v0 무백엔드. (P3 FITS/천문 전처리, P2+ Supabase)
+**External resources**: skills.sh(next/react/shadcn/supabase 바인딩) + getdesign.md(Linear=워크벤치, Notion=온보딩) — plan.md "외부 리소스 바인딩" 섹션 참조.
+<!-- SPECKIT END -->
+
+배경 컨텍스트:
+- 연구 캔버스(토대): `CANVAS.md`
 - 데이터셋: `docs/datasets.md`
 - 작업 플러그인 인터페이스: `docs/task-interface.md`
 - v0 사용자 흐름: `docs/v0-flow.md`
 - 하이브리드 컴퓨팅: `docs/compute-hybrid.md`
-- 데이터 모델: `docs/data-model.md`
 
 ## 스코프 원칙
 
