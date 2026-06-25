@@ -1,0 +1,42 @@
+{
+  "name": "astroml-studio",
+  "version": "0.1.0",
+  "private": true,
+  "description": "노코드 천문 이미지 ML 연구툴 (학부~대학원생용)",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@tensorflow-models/mobilenet": "^2.1.1",
+    "@tensorflow/tfjs": "^4.22.0",
+    "clsx": "^2.1.1",
+    "dexie": "^4.0.10",
+    "dexie-react-hooks": "^1.1.7",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.0",
+    "tailwind-merge": "^2.6.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@testing-library/react": "^16.2.0",
+    "@types/node": "^22.10.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.18.0",
+    "eslint-config-next": "^15.1.6",
+    "jsdom": "^26.0.0",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.4"
+  }
+}

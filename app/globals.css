@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  디자인 토큰 단일 소스 (plan.md "외부 리소스 바인딩" B)
+  - Linear: 정밀·미니멀·purple accent (워크벤치)
+  - Notion: 따뜻한 라이트 표면 (온보딩)
+  - 천문 이미지 뷰어(--viewer-bg)는 항상 다크 (관측천문 관례)
+*/
+:root {
+  --font-sans: "Pretendard", "Inter";
+  --font-mono: "JetBrains Mono";
+  --radius: 8px;
+
+  /* Notion-ish warm light */
+  --bg: 40 16% 98%;
+  --surface: 0 0% 100%;
+  --elevated: 40 12% 96%;
+  --border: 40 8% 88%;
+  --fg: 30 8% 12%;
+  --muted: 30 5% 45%;
+
+  /* Linear purple accent */
+  --accent: 256 78% 60%;
+  --accent-fg: 0 0% 100%;
+
+  --success: 152 56% 40%;
+  --warning: 38 92% 50%;
+  --danger: 0 72% 51%;
+
+  --viewer-bg: 230 30% 6%;
+}
+
+.dark {
+  /* Linear precise dark */
+  --bg: 230 16% 8%;
+  --surface: 230 14% 11%;
+  --elevated: 230 12% 14%;
+  --border: 230 10% 20%;
+  --fg: 220 16% 92%;
+  --muted: 220 8% 60%;
+
+  --accent: 256 88% 70%;
+  --accent-fg: 230 30% 8%;
+
+  --success: 152 56% 50%;
+  --warning: 38 92% 58%;
+  --danger: 0 72% 62%;
+
+  --viewer-bg: 230 30% 4%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background: hsl(var(--bg));
+  color: hsl(var(--fg));
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 천문 이미지 뷰어 캔버스 */
+.viewer-canvas {
+  background: hsl(var(--viewer-bg));
+}

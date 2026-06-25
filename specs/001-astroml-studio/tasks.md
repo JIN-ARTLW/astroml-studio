@@ -24,13 +24,13 @@ description: "Task list for AstroML Studio v0 (001-astroml-studio)"
 
 **Purpose**: Next.js 프로젝트 초기화 및 공통 기반. (레포에는 이미 docs/·specs/·.specify가 존재 — 앱 코드를 루트에 추가)
 
-- [ ] T001 Next.js(App Router, TypeScript) 프로젝트를 레포 루트에 초기화 (`package.json`, `tsconfig.json`, `next.config.ts`, `app/`)
-- [ ] T002 [P] Tailwind CSS + shadcn/ui 설정 (`components.json`, `app/globals.css`, `components/ui/`)
-- [ ] T003 [P] ESLint/Prettier 설정 (`.eslintrc`, `.prettierrc`)
-- [ ] T004 [P] Vitest + React Testing Library 설정 (`vitest.config.ts`, `tests/unit/`)
-- [ ] T005 [P] Playwright e2e 설정 (`playwright.config.ts`, `tests/e2e/`)
-- [ ] T006 [P] 핵심 의존성 설치: `@tensorflow/tfjs`, `dexie`, `recharts` (`package.json`)
-- [ ] T007 [P] 디자인 토큰 바인딩: getdesign.md **Linear**(워크벤치)+**Notion**(온보딩)을 단일 토큰 소스로 매핑, 라이트/다크 + 다크 우선 이미지 뷰어 (`lib/design/tokens.ts`)
+- [X] T001 Next.js(App Router, TypeScript) 프로젝트를 레포 루트에 초기화 (`package.json`, `tsconfig.json`, `next.config.ts`, `app/`)
+- [X] T002 [P] Tailwind CSS + shadcn/ui 설정 (`components.json`, `app/globals.css`, `components/ui/`)
+- [X] T003 [P] ESLint/Prettier 설정 (`.eslintrc`, `.prettierrc`)
+- [X] T004 [P] Vitest + React Testing Library 설정 (`vitest.config.ts`, `tests/unit/`)
+- [X] T005 [P] Playwright e2e 설정 (`playwright.config.ts`, `tests/e2e/`)
+- [X] T006 [P] 핵심 의존성 설치: `@tensorflow/tfjs`, `dexie`, `recharts` (`package.json`)
+- [X] T007 [P] 디자인 토큰 바인딩: getdesign.md **Linear**(워크벤치)+**Notion**(온보딩)을 단일 토큰 소스로 매핑, 라이트/다크 + 다크 우선 이미지 뷰어 (`lib/design/tokens.ts`)
 
 ---
 
@@ -38,15 +38,15 @@ description: "Task list for AstroML Studio v0 (001-astroml-studio)"
 
 **Purpose**: 모든 사용자 스토리가 의존하는 코어. ⚠️ 완료 전 스토리 착수 불가.
 
-- [ ] T008 작업 플러그인 인터페이스/타입 정의 — 7 슬롯 (`lib/tasks/types.ts`, contracts/task-plugin.md 준수)
-- [ ] T009 작업 레지스트리(플러그인 조회, 하드코딩 금지) (`lib/tasks/registry.ts`)
-- [ ] T010 [P] Dexie 스키마/스토어 정의 — projects/images/labels/runs/results (`lib/store/db.ts`, data-model.md)
-- [ ] T011 LocalStore API 구현 — CRUD·진행률·용량추정 (`lib/store/index.ts`, contracts/local-store.md) (T010 의존)
-- [ ] T012 [P] result-schema 검증기 구현 (`lib/ml/result-schema.ts`, contracts/result-schema.json)
-- [ ] T013 [P] 앱 셸/레이아웃 + 테마(라이트/다크) 프로바이더 (`app/layout.tsx`, `components/theme/`)
-- [ ] T014 [P] 한국어 문자열 베이스라인 i18n (`lib/i18n/ko.ts`, FR-031)
-- [ ] T015 프로젝트 흐름 라우팅 스켈레톤 (`app/page.tsx`, `app/new/`, `app/project/[id]/{data,label,train,result,predict}/`)
-- [ ] T016 [P] 빈/로딩/오류 상태 + 토스트 프리미티브 (`components/ui/states.tsx`)
+- [X] T008 작업 플러그인 인터페이스/타입 정의 — 7 슬롯 (`lib/tasks/types.ts`, contracts/task-plugin.md 준수)
+- [X] T009 작업 레지스트리(플러그인 조회, 하드코딩 금지) (`lib/tasks/registry.ts`)
+- [X] T010 [P] Dexie 스키마/스토어 정의 — projects/images/labels/runs/results (`lib/store/db.ts`, data-model.md)
+- [X] T011 LocalStore API 구현 — CRUD·진행률·용량추정 (`lib/store/index.ts`, contracts/local-store.md) (T010 의존)
+- [X] T012 [P] result-schema 검증기 구현 (`lib/ml/result-schema.ts`, contracts/result-schema.json)
+- [X] T013 [P] 앱 셸/레이아웃 + 테마(라이트/다크) 프로바이더 (`app/layout.tsx`, `components/theme/`)
+- [X] T014 [P] 한국어 문자열 베이스라인 i18n (`lib/i18n/ko.ts`, FR-031)
+- [X] T015 프로젝트 흐름 라우팅 스켈레톤 (`app/page.tsx`, `app/new/`, `app/project/[id]/{data,label,train,result,predict}/`)
+- [X] T016 [P] 빈/로딩/오류 상태 + 토스트 프리미티브 (`components/ui/states.tsx`)
 
 **Checkpoint**: 코어 준비 완료 — 사용자 스토리 착수 가능.
 
@@ -60,26 +60,26 @@ description: "Task list for AstroML Studio v0 (001-astroml-studio)"
 
 ### Tests for User Story 1 ⚠️ (먼저 작성·실패 확인)
 
-- [ ] T017 [P] [US1] Vitest: TaskPlugin 계약(C1~C4) 테스트 (`tests/unit/task-plugin.contract.test.ts`)
-- [ ] T018 [P] [US1] Vitest: result-schema 검증 테스트 (`tests/unit/result-schema.test.ts`)
-- [ ] T019 [P] [US1] Playwright e2e: S1 전체 동선(데모→학습→예측) (`tests/e2e/us1-flow.spec.ts`)
+- [X] T017 [P] [US1] Vitest: TaskPlugin 계약(C1~C4) 테스트 (`tests/unit/task-plugin.contract.test.ts`)
+- [X] T018 [P] [US1] Vitest: result-schema 검증 테스트 (`tests/unit/result-schema.test.ts`)
+- [X] T019 [P] [US1] Playwright e2e: S1 전체 동선(데모→학습→예측) (`tests/e2e/us1-flow.spec.ts`)
 
 ### Implementation for User Story 1
 
-- [ ] T020 [P] [US1] 데모 데이터셋 번들 — 은하 3클래스(smooth-round/edge-on-disk/spiral) PNG + manifest + 출처/라이선스 (`public/demo/`, FR-028)
-- [ ] T021 [US1] 분류 플러그인 구현 — input/LabelEditor/head/loss/metrics (`lib/tasks/classification/index.tsx`, task-plugin v0 값)
-- [ ] T022 [US1] 새 프로젝트 화면 — 작업 선택(분류 active, 나머지 coming-soon)·클래스 정의 (`app/new/page.tsx`, FR-001/002)
-- [ ] T023 [US1] 데이터 화면 — 데모 불러오기 + 업로드(폴더명 자동 라벨, 손상 항목 스킵+사유) (`app/project/[id]/data/page.tsx`, FR-004/005/006)
-- [ ] T024 [US1] 라벨링 갤러리 — 클래스 버튼·숫자 단축키·진행률 (`app/project/[id]/label/page.tsx`, `components/gallery/`, FR-009/010)
-- [ ] T025 [US1] 브라우저 학습 엔진 — MobileNetV2 임베딩(캐시)+Dense 헤드, train/val 자동분할 (`lib/ml/train.ts`, FR-012/013)
-- [ ] T026 [US1] 학습 사전검사 가드 — 라벨 없음·클래스당 표본 부족 안내 (`lib/ml/guards.ts`, FR-015)
-- [ ] T027 [US1] 학습 화면 — 에폭별 정확도/손실 라이브 차트 (`app/project/[id]/train/page.tsx`, `components/charts/`, FR-014)
-- [ ] T028 [US1] 분류 evaluate() → result-schema(정확도·혼동행렬·per-class·곡선) (`lib/tasks/classification/evaluate.ts`, FR-020)
-- [ ] T029 [US1] 결과 화면 — 혼동행렬·클래스별 지표·곡선·오분류 갤러리(다크 뷰어) (`app/project/[id]/result/page.tsx`, `components/viewer/`, FR-020)
-- [ ] T030 [US1] 예측 화면 — 새 이미지→클래스+신뢰도 top-k (`app/project/[id]/predict/page.tsx`, FR-021)
-- [ ] T031 [US1] 내보내기 — TF.js 모델 + 지표 CSV (`lib/ml/export.ts`, FR-022)
-- [ ] T032 [US1] 전 동선 IndexedDB 영속화 + 재방문 유지 검증 (`lib/store/` 연동, SC-010)
-- [ ] T033 🔭 [US1] 천문 실효성 검증 — 데모가 실제 은하 형태분류 과제인지 + 다크 뷰어 천체 판독 적합성 확인 (quickstart 천문 게이트)
+- [X] T020 [P] [US1] 데모 데이터셋 번들 — 은하 3클래스(smooth-round/edge-on-disk/spiral) PNG + manifest + 출처/라이선스 (`public/demo/`, FR-028)
+- [X] T021 [US1] 분류 플러그인 구현 — input/LabelEditor/head/loss/metrics (`lib/tasks/classification/index.tsx`, task-plugin v0 값)
+- [X] T022 [US1] 새 프로젝트 화면 — 작업 선택(분류 active, 나머지 coming-soon)·클래스 정의 (`app/new/page.tsx`, FR-001/002)
+- [X] T023 [US1] 데이터 화면 — 데모 불러오기 + 업로드(폴더명 자동 라벨, 손상 항목 스킵+사유) (`app/project/[id]/data/page.tsx`, FR-004/005/006)
+- [X] T024 [US1] 라벨링 갤러리 — 클래스 버튼·숫자 단축키·진행률 (`app/project/[id]/label/page.tsx`, `components/gallery/`, FR-009/010)
+- [X] T025 [US1] 브라우저 학습 엔진 — MobileNetV2 임베딩(캐시)+Dense 헤드, train/val 자동분할 (`lib/ml/train.ts`, FR-012/013)
+- [X] T026 [US1] 학습 사전검사 가드 — 라벨 없음·클래스당 표본 부족 안내 (`lib/ml/guards.ts`, FR-015)
+- [X] T027 [US1] 학습 화면 — 에폭별 정확도/손실 라이브 차트 (`app/project/[id]/train/page.tsx`, `components/charts/`, FR-014)
+- [X] T028 [US1] 분류 evaluate() → result-schema(정확도·혼동행렬·per-class·곡선) (`lib/tasks/classification/evaluate.ts`, FR-020)
+- [X] T029 [US1] 결과 화면 — 혼동행렬·클래스별 지표·곡선·오분류 갤러리(다크 뷰어) (`app/project/[id]/result/page.tsx`, `components/viewer/`, FR-020)
+- [X] T030 [US1] 예측 화면 — 새 이미지→클래스+신뢰도 top-k (`app/project/[id]/predict/page.tsx`, FR-021)
+- [X] T031 [US1] 내보내기 — TF.js 모델 + 지표 CSV (`lib/ml/export.ts`, FR-022)
+- [X] T032 [US1] 전 동선 IndexedDB 영속화 + 재방문 유지 검증 (`lib/store/` 연동, SC-010)
+- [X] T033 🔭 [US1] 천문 실효성 검증 — 데모가 실제 은하 형태분류 과제인지 + 다크 뷰어 천체 판독 적합성 확인 (quickstart 천문 게이트)
 
 **Checkpoint**: US1 = 배포 가능한 MVP (H1/H2 증명).
 
